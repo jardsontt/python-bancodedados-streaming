@@ -3,6 +3,7 @@ import sqlite3
 import random
 import datetime
 import pdb
+import os
 
 def criarBD():
   conn = sqlite3.connect('streaming.db')
@@ -201,3 +202,12 @@ def planoMaispopular():
   conn.close()
   return resultado[0]
 print('O plano mais popular é: ', planoMaispopular())
+
+def deletarBD():
+  try:
+    os.remove('streaming.db')
+    print("Banco de dados 'streaming.db' deletado com sucesso.")
+  except FileNotFoundError:
+    print("O banco de dados 'streaming.db' não existe.")
+
+deletarBD()
